@@ -1,0 +1,7 @@
+<%= form_tag top_login_path, method: :post do %>
+  <%= label_tag :uid, 'ユーザーID' %> 
+  <%= text_field_tag :uid %> 
+  <%= label_tag :pass, 'パスワード' %> 
+  <%= password_field_tag :pass %> 
+  <%= submit_tag 'ログインするお' %>
+<% end %>

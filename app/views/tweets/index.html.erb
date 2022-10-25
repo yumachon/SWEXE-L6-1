@@ -1,0 +1,31 @@
+<% @tweets.each do |e| %>
+  <p>
+    <%= e.message %>
+    <% if session[:login_uid] %>
+      <%= link_to '削除', tweet_path(e), method: :delete %>
+      <% if e.likes.count > 0 %>
+        <%= link_to 'いいね!削除', like_path(e), method: :delete %>
+      <% else %>
+        <%= link_to 'いいね!', likes_path(tweet_id: e.id), method: :post %>
+      <% end %>
+    <% end %>
+    </p>
+<% end %>
+
+<p> 
+<% if session[:login_uid] %>
+  <%= link_to 'ツイートする', new_tweet_path %>
+<% end %>
+</p>
+
+<p>
+<% if session[:login_uid] %>
+  <%= link_to 'ログアウト', top_logout_path %>
+<% else %>
+  <%= link_to 'ログイン', top_main_path %>
+<% end %>
+</p>
+
+<p>
+  <%= link_to 'ユーザ一覧', users_path %>
+</p>
